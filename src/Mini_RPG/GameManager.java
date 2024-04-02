@@ -2,38 +2,39 @@ package Mini_RPG;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Vector;
 
 public class GameManager {
 
 	private Map<String, Stage> stageList = new HashMap<String, Stage>();
-	private Vector<Player> playerList;
-	private Vector<Unit> monsterList;
 	private String curStage;
-	private static String nextStage;
+	public static String nextStage;
 
 	public GameManager() {
 		setStage();
-		setPlayerList();
 		curStage = "";
-		nextStage = "LOBBY";
+		nextStage = "TITLE";
 	}
 
 	private void setStage() {
-
-	}
-
-	private void setPlayerList() {
-
+		stageList.put("TITLE", new StageTitle());
+		stageList.put("LOBBY", new StageLobby());
+		stageList.put("BATTLE", new StageBattle());
 	}
 
 	private boolean isRun() {
 		return nextStage.equals("END") ? false : true;
 	}
 
+	private void changeStage() {
+		Stage stage = stageList.get(nextStage);
+		curStage = nextStage;
+		System.out.println("현재 스테이지 : " + curStage);
+		stage.update();
+	}
+
 	public void run() {
 		while (isRun()) {
-
+			changeStage();
 		}
 	}
 }

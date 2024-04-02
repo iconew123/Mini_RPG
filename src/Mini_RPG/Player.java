@@ -10,7 +10,7 @@ public class Player extends Unit {
 	void skill(Unit target) {
 		if (this.getName().equals("전사"))
 			smash(target);
-		else if (this.getName().equals("법사"))
+		else if (this.getName().equals("마법사"))
 			wideAttack();
 		else if (this.getName().equals("힐러"))
 			heal();

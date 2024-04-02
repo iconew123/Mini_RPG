@@ -14,9 +14,9 @@ public abstract class Unit {
 		this.name = name;
 		this.power = power;
 	}
-	
+
 	public Unit() {
-		
+
 	}
 
 	public int getMaxHp() {
@@ -28,7 +28,7 @@ public abstract class Unit {
 	}
 
 	public void setHp(int hp) {
-		this.hp -= hp;
+		this.hp += hp;
 		if (this.hp <= 0) {
 			this.hp = 0;
 			this.isDead = !this.isDead;
@@ -38,7 +38,7 @@ public abstract class Unit {
 	public String getName() {
 		return this.name;
 	}
-	
+
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -67,9 +67,9 @@ public abstract class Unit {
 	public void attack(Unit target) {
 		String message = String.format("[%s] 의 일반 공격으로 [%s]에게 [%d]만큼의 피해를 입혔습니다.", this.name, target.name, this.power);
 		System.out.println(message);
-		target.setHp(this.power);
+		target.setHp(this.power * (-1));
 		if (target.getHp() == 0)
-			System.out.printf("[%s] 유닛 사망\n", target.getHp());
+			System.out.printf("[%s] 유닛 사망\n", target.getName());
 	}
 
 	abstract void skill(Unit target);
