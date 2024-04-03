@@ -107,12 +107,19 @@ public class StageBattle extends Stage {
 				continue;
 			}
 
-			System.out.printf("[%s] [1.일반공격] [2.스킬사용]  ", player.getName());
+			System.out.printf("[%s] [1.일반공격] [2.스킬사용 (%d/%d)]  ", player.getName(), player.getTimes(),
+					player.getMaxTimes());
 			int sel = inputNumber(">> ");
 
 			if (sel == NORMAL_ATTACK) {
 				player.attack(monsterList.get(randomTarget));
 			} else if (sel == USE_SKILL) {
+				if (player.getTimes() == 0) {
+					System.err.println("스킬의 횟수를 모두 사용했습니다.");
+					i--;
+					continue;
+				}
+				player.setTimesMinus();
 				useSkillPlayer(player, monsterList.get(randomTarget));
 			} else if (sel == -1) {
 				break;
@@ -154,9 +161,14 @@ public class StageBattle extends Stage {
 
 			if (randomAction == NORMAL_ATTACK)
 				unit.attack(playerList.get(randomTarget));
-			else if (randomAction == USE_SKILL)
+			else if (randomAction == USE_SKILL) {
+				if (unit.getTimes() == 0) {
+					i--;
+					continue;
+				}
+				unit.setTimesMinus();
 				UseSkillMonster(unit, playerList.get(randomTarget));
-			else {
+			} else {
 				i--;
 				continue;
 			}

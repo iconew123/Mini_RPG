@@ -7,6 +7,7 @@ public abstract class Unit {
 	private String name;
 	private int power;
 	private boolean isDead;
+	private int maxTimes;
 	private int times;
 
 	public Unit(int hp, String name, int power, int times) {
@@ -14,6 +15,7 @@ public abstract class Unit {
 		this.hp = hp;
 		this.name = name;
 		this.power = power;
+		this.maxTimes = times;
 		this.times = times;
 	}
 
@@ -51,6 +53,10 @@ public abstract class Unit {
 
 	public boolean isDead() {
 		return this.isDead;
+	}
+
+	public int getMaxTimes() {
+		return this.maxTimes;
 	}
 
 	public int getTimes() {
