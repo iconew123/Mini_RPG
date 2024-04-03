@@ -3,13 +3,16 @@ package Mini_RPG;
 public class UnitBat extends Unit {
 
 	public UnitBat() {
-		this.setName("박쥐");
+		super(5);
+		setName("박쥐");
 	}
 
 	@Override
-	void skill(Unit target) {
-		System.out.println("공격한 대상에게 [실명] 상태이상을 부여합니다.");
-
+	public void skill(Unit target) {
+		String message = String.format("[%s] 의 스킬사용으로 [%s] 에게 [침묵] 상태이상을 부여합니다.", this.getName(), target.getName());
+		Player targetPlayer = (Player) target;
+		targetPlayer.setIsSilence();
+		System.out.println(message);
 	}
 
 }

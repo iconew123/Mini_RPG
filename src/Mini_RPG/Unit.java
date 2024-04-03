@@ -7,15 +7,17 @@ public abstract class Unit {
 	private String name;
 	private int power;
 	private boolean isDead;
+	private int times;
 
-	public Unit(int hp, String name, int power) {
+	public Unit(int hp, String name, int power, int times) {
 		this.maxHp = hp;
 		this.hp = hp;
 		this.name = name;
 		this.power = power;
+		this.times = times;
 	}
 
-	public Unit() {
+	public Unit(int times) {
 
 	}
 
@@ -51,6 +53,14 @@ public abstract class Unit {
 		return this.isDead;
 	}
 
+	public int getTimes() {
+		return this.times;
+	}
+
+	public void setTimesMinus() {
+		this.times--;
+	}
+
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
@@ -72,5 +82,6 @@ public abstract class Unit {
 			System.out.printf("[%s] 유닛 사망\n", target.getName());
 	}
 
-	abstract void skill(Unit target);
+	// 스킬에 사용 횟수 제한
+	public abstract void skill(Unit target);
 }

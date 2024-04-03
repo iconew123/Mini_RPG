@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GameManager {
-
+	// 싱글톤 패턴 바꾸끼
 	private Map<String, Stage> stageList = new HashMap<String, Stage>();
 	private String curStage;
 	public static String nextStage;

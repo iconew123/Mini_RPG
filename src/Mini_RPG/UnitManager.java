@@ -12,10 +12,16 @@ public class UnitManager {
 	private String path = "Mini_RPG.";
 	private String[] monsterKind = { "UnitBat", "UnitOrc", "UnitWolf" };
 
-	public UnitManager() {
+	private UnitManager() {
 		playerList.add(new Player(1000, "전사", 50));
 		playerList.add(new Player(800, "마법사", 75));
 		playerList.add(new Player(600, "힐러", 25));
+	}
+
+	private static UnitManager instance = new UnitManager();
+
+	public static UnitManager getInstance() {
+		return instance;
 	}
 
 	public Vector<Unit> getMonsterList() {

@@ -7,7 +7,7 @@ public class StageBattle extends Stage {
 	private final int NORMAL_ATTACK = 1;
 	private final int USE_SKILL = 2;
 
-	private UnitManager unitManager = new UnitManager();
+	private UnitManager unitManager = UnitManager.getInstance();
 	private Vector<Player> playerList;
 	private Vector<Unit> monsterList;
 	private int livePlayer;
@@ -74,6 +74,7 @@ public class StageBattle extends Stage {
 			else
 				System.out.println(monsterList.get(i));
 		}
+		System.out.println();
 	}
 
 	private void deadCount() {
@@ -100,6 +101,12 @@ public class StageBattle extends Stage {
 			int randomTarget = targetMonster();
 			if (player.isDead())
 				continue;
+			else if (player.isSilence()) {
+				System.err.printf("침묵상태이므로 [%s]는 이번턴 동안 행동을 할 수 없습니다.\n", player.getName());
+				player.setIsSilence();
+				continue;
+			}
+
 			System.out.printf("[%s] [1.일반공격] [2.스킬사용]  ", player.getName());
 			int sel = inputNumber(">> ");
 
