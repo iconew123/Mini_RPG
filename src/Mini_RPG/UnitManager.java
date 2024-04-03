@@ -13,9 +13,9 @@ public class UnitManager {
 	private String[] monsterKind = { "UnitBat", "UnitOrc", "UnitWolf" };
 
 	private UnitManager() {
-		playerList.add(new Player(1000, "전사", 50));
-		playerList.add(new Player(800, "마법사", 75));
-		playerList.add(new Player(600, "힐러", 25));
+		playerList.add(new Player(0, "전사", 50));
+		playerList.add(new Player(0, "마법사", 75));
+		playerList.add(new Player(0, "힐러", 25));
 	}
 
 	private static UnitManager instance = new UnitManager();

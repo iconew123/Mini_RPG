@@ -8,6 +8,7 @@ public class GameManager {
 	private Map<String, Stage> stageList = new HashMap<String, Stage>();
 	private String curStage;
 	public static String nextStage;
+	public static boolean isEnd;
 
 	public GameManager() {
 		setStage();
@@ -22,7 +23,7 @@ public class GameManager {
 	}
 
 	private boolean isRun() {
-		return nextStage.equals("END") ? false : true;
+		return nextStage.equals("END") || isEnd ? false : true;
 	}
 
 	private void changeStage() {
@@ -36,5 +37,6 @@ public class GameManager {
 		while (isRun()) {
 			changeStage();
 		}
+		System.out.println("게임종료");
 	}
 }

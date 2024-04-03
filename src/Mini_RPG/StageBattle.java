@@ -88,6 +88,11 @@ public class StageBattle extends Stage {
 				mDead++;
 		livePlayer = playerList.size() - pDead;
 		liveMonster = monsterList.size() - mDead;
+
+		if (livePlayer == 0) {
+			System.err.println("모든 플레이어 사망");
+			GameManager.isEnd = true;
+		}
 	}
 
 	private void attackPlayers() {
